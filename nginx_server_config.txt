@@ -1,0 +1,32 @@
+# in : /etc/nginx/
+  ## conf.d/
+
+- create a file : my_first_server.conf
+
+- describe or build ur server 
+
+###############################################################
+  server {
+
+  listen 80 ;
+  server_name localhost 127.0.0.1 ;
+ 
+  # 1 - dealing with the static files ( nginx as a  files server )
+
+  location /static/ {
+
+   root /home/ilyasss/Desktop/z_programs/z_django_cloud/gunicorn_nginx_ ;
+
+    }
+
+
+  # 2- proxy anything that is not about requesting static files to my django server 
+  ## (nginx as a reverse proxy)
+  location / {
+
+    proxy_pass http://127.0.0.1:8000 ;
+
+   }
+
+}
+
